@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>ANSI Virtual Keyboard — Correct Layout</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+  :root { --key-h: 60px; }
+
+  body {
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #1e1e1e;
+    color: #eee;
+    min-height: 100vh;
+    padding: 24px;
+    gap: 18px;
+  }
+
+  textarea {
+    width: min(900px, 92vw);
+    min-height: 130px;
+    font-size: 1.05rem;
+    line-height: 1.5;
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    resize: vertical;
+    background:#222;
+    color:#e9e9e9;
+    box-shadow: inset 0 0 12px rgba(0,0,0,.6);
+  }
+
+  /* Each row is its own 60-unit grid (so 1u = span 4) */
+  .kb-row {
+    display: grid;
+    grid-template-columns: repeat(60, 1fr);
+    gap: 8px;
+    width: min(1000px, 96vw);
+  }
+
+  /* Fancy keycap (flattened from your SCSS) */
+  .keycap {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: var(--key-h);
+    border-radius: 10px;
+    background: linear-gradient(180deg, #282828, #202020);
+    box-shadow:
+      inset -8px 0 8px rgba(0, 0, 0, 0.15),
+      inset 0 -8px 8px rgba(0, 0, 0, 0.25),
+      0 0 0 2px rgba(0, 0, 0, 0.75),
+      6px 10px 15px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    cursor: pointer;
+    transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in;
+  }
+  .keycap::before {
+    content: "";
+    position: absolute;
+    top: 3px;
+    left: 4px;
+    bottom: 10px;
+    right: 6px;
+    background: linear-gradient(90deg, #232323, #4a4a4a);
+    border-radius: 10px;
+    box-shadow:
+      -6px -6px 8px rgba(255, 255, 255, 0.2),
+      6px 4px 8px rgba(0, 0, 0, 0.2);
+    border-left: 1px solid #0004;
+    border-bottom: 1px solid #0004;
+    border-top: 1px solid #0009;
+    transition: all 0.1s ease-in-out;
+  }
+  .keycap span {
+    position: relative;
+    color: #e9e9e9;
+    font-size: 16px;
+    letter-spacing: .25px;
+    pointer-events: none;
+  }
+  .keycap:active,
+  .keycap.active,
+  .keycap.locked {
+    transform: translateY(2px);
+    box-shadow:
+      inset -4px 0 4px rgba(0, 0, 0, 0.1),
+      inset 0 -4px 4px rgba(0, 0, 0, 0.15),
+      0 0 0 2px rgba(0, 0, 0, 0.5),
+      3px 5px 10px rgba(0, 0, 0, 0.3);
+  }
+  .keycap:active::before,
+  .keycap.active::before,
+  .keycap.locked::before {
+    top: 5px;
+    left: 5px;
+    bottom: 8px;
+    right: 8px;
+    box-shadow:
+      -4px -4px 5px rgba(255, 255, 255, 0.15),
+      4px 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Width utilities (1u = span 4) */
+  .u1   { grid-column: span 4; }
+  .u1_25{ grid-column: span 5; }
+  .u1_5 { grid-column: span 6; }
+  .u1_75{ grid-column: span 7; }
+  .u2   { grid-column: span 8; }
+  .u2_25{ grid-column: span 9; }
+  .u2_75{ grid-column: span 11; }
+  .u6_25{ grid-column: span 25; }
+
+  /* Minor spacer (for function-row grouping) */
+  .spacer { grid-column: span 2; visibility: hidden; }
+
+  /* Make the top function row a bit shorter */
+  .kb-row.top .keycap { height: 46px; }
+
+  /* Optional: nice focus ring for accessibility when tabbing */
+  .keycap:focus-visible { outline: 2px solid #6ab0ff; outline-offset: 2px; }
+</style>
+</head>
+<body>
+
+<textarea id="screen" placeholder="Type here..."></textarea>
+
+<!-- Function (Esc/F1–F12) row -->
+<div class="kb-row top">
+  <div class="keycap u1" data-code="Escape" tabindex="0"><span>Esc</span></div>
+  <div class="spacer"></div>
+  <div class="keycap u1" data-code="F1" tabindex="0"><span>F1</span></div>
+  <div class="keycap u1" data-code="F2" tabindex="0"><span>F2</span></div>
+  <div class="keycap u1" data-code="F3" tabindex="0"><span>F3</span></div>
+  <div class="keycap u1" data-code="F4" tabindex="0"><span>F4</span></div>
+  <div class="spacer"></div>
+  <div class="keycap u1" data-code="F5" tabindex="0"><span>F5</span></div>
+  <div class="keycap u1" data-code="F6" tabindex="0"><span>F6</span></div>
+  <div class="keycap u1" data-code="F7" tabindex="0"><span>F7</span></div>
+  <div class="keycap u1" data-code="F8" tabindex="0"><span>F8</span></div>
+  <div class="spacer"></div>
+  <div class="keycap u1" data-code="F9" tabindex="0"><span>F9</span></div>
+  <div class="keycap u1" data-code="F10" tabindex="0"><span>F10</span></div>
+  <div class="keycap u1" data-code="F11" tabindex="0"><span>F11</span></div>
+  <div class="keycap u1" data-code="F12" tabindex="0"><span>F12</span></div>
+</div>
+
+<!-- Number row: ` 1 … 0 - = Backspace -->
+<div class="kb-row">
+  <div class="keycap u1" data-code="Backquote" data-key="`" data-shift="~" tabindex="0"><span>`</span></div>
+  <div class="keycap u1" data-code="Digit1" data-key="1" data-shift="!" tabindex="0"><span>1</span></div>
+  <div class="keycap u1" data-code="Digit2" data-key="2" data-shift="@" tabindex="0"><span>2</span></div>
+  <div class="keycap u1" data-code="Digit3" data-key="3" data-shift="#" tabindex="0"><span>3</span></div>
+  <div class="keycap u1" data-code="Digit4" data-key="4" data-shift="$" tabindex="0"><span>4</span></div>
+  <div class="keycap u1" data-code="Digit5" data-key="5" data-shift="%" tabindex="0"><span>5</span></div>
+  <div class="keycap u1" data-code="Digit6" data-key="6" data-shift="^" tabindex="0"><span>6</span></div>
+  <div class="keycap u1" data-code="Digit7" data-key="7" data-shift="&" tabindex="0"><span>7</span></div>
+  <div class="keycap u1" data-code="Digit8" data-key="8" data-shift="*" tabindex="0"><span>8</span></div>
+  <div class="keycap u1" data-code="Digit9" data-key="9" data-shift="(" tabindex="0"><span>9</span></div>
+  <div class="keycap u1" data-code="Digit0" data-key="0" data-shift=")" tabindex="0"><span>0</span></div>
+  <div class="keycap u1" data-code="Minus" data-key="-" data-shift="_" tabindex="0"><span>-</span></div>
+  <div class="keycap u1" data-code="Equal" data-key="=" data-shift="+" tabindex="0"><span>=</span></div>
+  <div class="keycap u2" data-code="Backspace" data-action="backspace" tabindex="0"><span>Backspace</span></div>
+</div>
+
+<!-- Tab row: Tab Q … P [ ] \ -->
+<div class="kb-row">
+  <div class="keycap u1_5" data-code="Tab" data-action="tab" tabindex="0"><span>Tab</span></div>
+  <div class="keycap u1" data-code="KeyQ" data-key="q" tabindex="0"><span>Q</span></div>
+  <div class="keycap u1" data-code="KeyW" data-key="w" tabindex="0"><span>W</span></div>
+  <div class="keycap u1" data-code="KeyE" data-key="e" tabindex="0"><span>E</span></div>
+  <div class="keycap u1" data-code="KeyR" data-key="r" tabindex="0"><span>R</span></div>
+  <div class="keycap u1" data-code="KeyT" data-key="t" tabindex="0"><span>T</span></div>
+  <div class="keycap u1" data-code="KeyY" data-key="y" tabindex="0"><span>Y</span></div>
+  <div class="keycap u1" data-code="KeyU" data-key="u" tabindex="0"><span>U</span></div>
+  <div class="keycap u1" data-code="KeyI" data-key="i" tabindex="0"><span>I</span></div>
+  <div class="keycap u1" data-code="KeyO" data-key="o" tabindex="0"><span>O</span></div>
+  <div class="keycap u1" data-code="KeyP" data-key="p" tabindex="0"><span>P</span></div>
+  <div class="keycap u1" data-code="BracketLeft" data-key="[" data-shift="{" tabindex="0"><span>[</span></div>
+  <div class="keycap u1" data-code="BracketRight" data-key="]" data-shift="}" tabindex="0"><span>]</span></div>
+  <div class="keycap u1_5" data-code="Backslash" data-key="\" data-shift="|" tabindex="0"><span>\</span></div>
+</div>
+
+<!-- Home row: Caps A … ; ' Enter -->
+<div class="kb-row">
+  <div class="keycap u1_75" data-code="CapsLock" data-action="caps" tabindex="0"><span>Caps</span></div>
+  <div class="keycap u1" data-code="KeyA" data-key="a" tabindex="0"><span>A</span></div>
+  <div class="keycap u1" data-code="KeyS" data-key="s" tabindex="0"><span>S</span></div>
+  <div class="keycap u1" data-code="KeyD" data-key="d" tabindex="0"><span>D</span></div>
+  <div class="keycap u1" data-code="KeyF" data-key="f" tabindex="0"><span>F</span></div>
+  <div class="keycap u1" data-code="KeyG" data-key="g" tabindex="0"><span>G</span></div>
+  <div class="keycap u1" data-code="KeyH" data-key="h" tabindex="0"><span>H</span></div>
+  <div class="keycap u1" data-code="KeyJ" data-key="j" tabindex="0"><span>J</span></div>
+  <div class="keycap u1" data-code="KeyK" data-key="k" tabindex="0"><span>K</span></div>
+  <div class="keycap u1" data-code="KeyL" data-key="l" tabindex="0"><span>L</span></div>
+  <div class="keycap u1" data-code="Semicolon" data-key=";" data-shift=":" tabindex="0"><span>;</span></div>
+  <div class="keycap u1" data-code="Quote" data-key="'" data-shift='"' tabindex="0"><span>'</span></div>
+  <div class="keycap u2_25" data-code="Enter" data-action="enter" tabindex="0"><span>Enter</span></div>
+</div>
+
+<!-- Bottom letter row: Shift Z … / Shift -->
+<div class="kb-row">
+  <div class="keycap u2_25" data-code="ShiftLeft" data-action="shift" tabindex="0"><span>Shift</span></div>
+  <div class="keycap u1" data-code="KeyZ" data-key="z" tabindex="0"><span>Z</span></div>
+  <div class="keycap u1" data-code="KeyX" data-key="x" tabindex="0"><span>X</span></div>
+  <div class="keycap u1" data-code="KeyC" data-key="c" tabindex="0"><span>C</span></div>
+  <div class="keycap u1" data-code="KeyV" data-key="v" tabindex="0"><span>V</span></div>
+  <div class="keycap u1" data-code="KeyB" data-key="b" tabindex="0"><span>B</span></div>
+  <div class="keycap u1" data-code="KeyN" data-key="n" tabindex="0"><span>N</span></div>
+  <div class="keycap u1" data-code="KeyM" data-key="m" tabindex="0"><span>M</span></div>
+  <div class="keycap u1" data-code="Comma" data-key="," data-shift="<" tabindex="0"><span>,</span></div>
+  <div class="keycap u1" data-code="Period" data-key="." data-shift=">" tabindex="0"><span>.</span></div>
+  <div class="keycap u1" data-code="Slash" data-key="/" data-shift="?" tabindex="0"><span>/</span></div>
+  <div class="keycap u2_75" data-code="ShiftRight" data-action="shift" tabindex="0"><span>Shift</span></div>
+</div>
+
+<!-- Bottom modifiers row -->
+<div class="kb-row">
+  <div class="keycap u1_25" data-code="ControlLeft" data-action="noop" tabindex="0"><span>Ctrl</span></div>
+  <div class="keycap u1_25" data-code="MetaLeft" data-action="noop" tabindex="0"><span>Win</span></div>
+  <div class="keycap u1_25" data-code="AltLeft" data-action="noop" tabindex="0"><span>Alt</span></div>
+  <div class="keycap u6_25" data-code="Space" data-action="space" tabindex="0"><span>Space</span></div>
+  <div class="keycap u1_25" data-code="AltRight" data-action="noop" tabindex="0"><span>Alt</span></div>
+  <div class="keycap u1_25" data-code="Fn" data-action="noop" tabindex="0"><span>Fn</span></div>
+  <div class="keycap u1_25" data-code="ContextMenu" data-action="noop" tabindex="0"><span>Menu</span></div>
+  <div class="keycap u1_25" data-code="ControlRight" data-action="noop" tabindex="0"><span>Ctrl</span></div>
+</div>
+
+<script>
+  const screen = document.getElementById('screen');
+  const keys = Array.from(document.querySelectorAll('.keycap'));
+
+  let capsLock = false;
+  let shiftActive = false;   // momentary (one-shot for clicks; held for physical)
+  let shiftClickSource = null;
+
+  // ----- Helpers: find & visual states -----
+  const byCode = code => document.querySelector(`.keycap[data-code="${CSS.escape(code)}"]`);
+
+  function setActive(el, on=true) {
+    if (!el) return;
+    el.classList.toggle('active', on);
+  }
+  function lock(el, on=true) {
+    if (!el) return;
+    el.classList.toggle('locked', on);
+  }
+
+  // ----- Text insertion with caret handling -----
+  function insertText(txt) {
+    const start = screen.selectionStart ?? screen.value.length;
+    const end   = screen.selectionEnd ?? screen.value.length;
+    const before = screen.value.slice(0, start);
+    const after  = screen.value.slice(end);
+    screen.value = before + txt + after;
+    const caret = start + txt.length;
+    screen.setSelectionRange(caret, caret);
+    screen.focus();
+  }
+  function backspace() {
+    const start = screen.selectionStart ?? screen.value.length;
+    const end   = screen.selectionEnd ?? screen.value.length;
+    if (start !== end) {
+      // delete selection
+      insertText('');
+      return;
+    }
+    if (start > 0) {
+      const before = screen.value.slice(0, start-1);
+      const after  = screen.value.slice(end);
+      screen.value = before + after;
+      const caret = start-1;
+      screen.setSelectionRange(caret, caret);
+      screen.focus();
+    }
+  }
+
+  // ----- Resolve character from a keycap considering shift/caps -----
+  function getOutputChar(keyEl) {
+    const base = keyEl.dataset.key;
+    if (!base) return '';
+
+    // If it's a letter, use caps ^ shift
+    if (base.length === 1 && /[a-z]/.test(base)) {
+      const makeUpper = capsLock ^ shiftActive; // XOR
+      return makeUpper ? base.toUpperCase() : base;
+    }
+    // Non-letters: use shifted symbol if shift is active
+    if (shiftActive && keyEl.dataset.shift) {
+      return keyEl.dataset.shift;
+    }
+    return base;
+  }
+
+  // ----- Handle a keycap press (from click or physical) -----
+  function handleKeycap(keyEl, fromPhysical=false) {
+    const action = keyEl.dataset.action || '';
+    const code   = keyEl.dataset.code || '';
+    // Visual
+    if (!keyEl.classList.contains('locked')) {
+      setActive(keyEl, true);
+      // auto-release for click/physical "tap"
+      setTimeout(() => setActive(keyEl, false), 140);
+    }
+
+    switch (action) {
+      case 'backspace': backspace(); break;
+      case 'enter': insertText('\n'); break;
+      case 'tab': insertText('    '); break;
+      case 'space': insertText(' '); break;
+      case 'caps':
+        capsLock = !capsLock;
+        lock(keyEl, capsLock);
+        break;
+      case 'shift':
+        // For physical press, shift state is managed in keydown/keyup handlers.
+        // For clicks, treat as one-shot shift.
+        if (!fromPhysical) {
+          shiftActive = true;
+          shiftClickSource = keyEl;
+          lock(keyEl, true);
+        }
+        break;
+      case 'noop':
+        // Do nothing (Ctrl/Alt/Meta/Menu/Fn)
+        break;
+      default: {
+        const out = getOutputChar(keyEl);
+        if (out) insertText(out);
+        // If shift was clicked (one-shot), release it after producing a character
+        if (shiftClickSource && !fromPhysical) {
+          shiftActive = false;
+          lock(shiftClickSource, false);
+          shiftClickSource = null;
+        }
+      }
+    }
+  }
+
+  // Clicks
+  keys.forEach(k => {
+    k.addEventListener('click', () => handleKeycap(k, false));
+  });
+
+  // Physical keyboard
+  document.addEventListener('keydown', (e) => {
+    // Identify target key element by e.code (layout-agnostic for US ANSI)
+    let keyEl = byCode(e.code);
+
+    // Manage shift state
+    if (e.code === 'ShiftLeft' || e.code === 'ShiftRight') {
+      shiftActive = true;
+      if (keyEl) lock(keyEl, true);
+    }
+
+    // Handle only keys we render; otherwise let default behavior work in textarea
+    if (keyEl) {
+      e.preventDefault();
+      handleKeycap(keyEl, true);
+    } else if (e.key === ' ' || e.code === 'Space') {
+      // Space can come as e.key === ' ' in some browsers
+      e.preventDefault();
+      keyEl = byCode('Space');
+      if (keyEl) handleKeycap(keyEl, true);
+    }
+  });
+
+  document.addEventListener('keyup', (e) => {
+    if (e.code === 'ShiftLeft' || e.code === 'ShiftRight') {
+      shiftActive = false;
+      const left  = byCode('ShiftLeft');
+      const right = byCode('ShiftRight');
+      lock(left, false);
+      lock(right, false);
+    }
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>M&M LUXURY PG</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <!-- AOS CSS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary-blue: rgb(30, 71, 167);
+      --secondary-gold: #f7cf4e;
+      --light-bg: #ffffff;
+      --text-dark: #222;
+      --text-light: #f9f9f9;
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family: 'Poppins', sans-serif; background: var(--light-bg); color: var(--text-dark); line-height:1.6; }
+    html { scroll-behavior: smooth; }
+    /* ================= NAVBAR (Desktop) ================= */
+    nav {
+      background: var(--primary-blue);
+      padding: 15px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav h1 {
+      font-family: 'Playfair Display', serif;
+      color: var(--secondary-gold);
+      font-size: 28px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: var(--light-bg);
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: var(--secondary-gold);
+    }
+    /* ================= Dropdown Menu ================= */
+    nav ul li select {
+      background: var(--primary-blue);
+      color: var(--light-bg);
+      font-weight: 500;
+      border: none;
+      border-radius: 6px;
+      transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+      font-size: 16px;
+      
+      box-shadow: 0 2px 8px rgba(30,71,167,0.08);
+      cursor: pointer;
+    }
+    nav ul li select:focus {
+      outline: none;
+      background: var(--secondary-gold);
+      color: var(--primary-blue);
+      box-shadow: 0 0 0 2px var(--secondary-gold);
+    }
+    nav ul li select option {
+      background: var(--primary-blue);
+      color: var(--light-bg);
+      font-size: 15px;
+      padding: 6px 0;
+    }
+    nav ul li select option:hover,
+    nav ul li select option:checked {
+      background: var(--secondary-gold);
+      color: var(--primary-blue);
+    }
+    /* ================= Book Now Button ================= */
+
+
+    .book-now-btn {
+      margin-left: 20px;
+      padding: 10px 18px;
+      background: var(--secondary-gold);
+      color: var(--primary-blue);
+      font-weight: 600;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .book-now-btn:hover {
+      background: var(--secondary-gold);
+      transform: scale(1.05);
+      box-shadow: rgb(128, 143, 171) 0px 5px 30px 0px;
+    }
+    /* ================= Hamburger Icon ================= */
+    .main-book-now-btn {
+      margin-left: 20px;
+      padding: 10px 18px;
+      background: var(--secondary-gold);
+      color: var(--primary-blue);
+      font-weight: 600;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .main-book-now-btn:hover {
+      background: var(--secondary-gold);
+      transform: scale(1.05);
+      box-shadow: rgb(128, 143, 171) 0px 5px 30px 0px;
+    }
+
+    /* ================= Hamburger Icon ================= */
+    .menu-toggle {
+      width: 30px;
+      height: 22px;
+      position: relative;
+      cursor: pointer;
+      display: none; /* hidden on desktop */
+      z-index: 2001; /* above menu */
+    }
+
+    .menu-toggle span {
+      background: var(--secondary-gold);
+      position: absolute;
+      height: 3px;
+      width: 100%;
+      border-radius: 3px;
+      transition: 0.4s;
+    }
+
+    .menu-toggle span:nth-child(1) { top: 0; }
+    .menu-toggle span:nth-child(2) { top: 9px; }
+    .menu-toggle span:nth-child(3) { top: 18px; }
+
+    /* Animate into X */
+    .menu-toggle.active span:nth-child(1) {
+      transform: rotate(45deg);
+      top: 9px;
+    }
+    .menu-toggle.active span:nth-child(2) { opacity: 0; }
+    .menu-toggle.active span:nth-child(3) {
+      transform: rotate(-45deg);
+      top: 9px;
+    }
+
+    /* ================= Mobile Styles ================= */
+    @media (max-width: 768px) {
+      nav {
+        padding: 15px 25px;
+      }
+
+      #nav-links {
+        position: fixed;
+        top: 0;
+        right: -250px; /* hidden */
+        width: 250px;
+        height: 100vh;
+        background: var(--primary-blue);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        box-shadow: -4px 0 12px rgba(0,0,0,0.2);
+        transition: right 0.4s ease;
+        z-index: 2000;
+      }
+
+      #nav-links.show {
+        right: 0; /* slide in */
+      }
+
+      #nav-links li a {
+        color: var(--light-bg);
+        font-size: 18px;
+        transition: 0.3s;
+      }
+      #nav-links li a:hover {
+        color: var(--secondary-gold);
+      }
+      #nav-links select {
+        background: var(--primary-blue);
+        color: var(--light-bg);
+        font-size: 18px;
+        border: none;
+        border-radius: 6px;
+        padding: 8px 16px;
+        margin-top: 8px;
+        margin-bottom: 8px;
+        width: 90%;
+        transition: background 0.3s, color 0.3s;
+      }
+      #nav-links select:focus {
+        outline: none;
+        background: var(--secondary-gold);
+        color: var(--primary-blue);
+      }
+      #nav-links option {
+        background: var(--primary-blue);
+        color: var(--light-bg);
+      }
+
+      .menu-toggle {
+        display: block; /* visible on mobile */
+      }
+
+      .book-now-btn {
+        display: none; /* optional hide on mobile */
+      }
+    }
+    /* Hero */
+    .hero { height:100vh; background: linear-gradient(rgba(10,31,68,0.7), rgba(10,31,68,0.7)), url('https://i.ibb.co/gR3FRbc/lounge.jpg') center/cover no-repeat; display:flex; justify-content:center; align-items:center; flex-direction:column; text-align:center; color: var(--text-light); }
+    .hero h1 { font-family: 'Playfair Display', serif; font-size: 54px; color: var(--secondary-gold); margin-bottom:20px; letter-spacing:1px; }
+    .hero p { font-size: 22px; margin-bottom:30px; }
+    .btn { background: var(--secondary-gold); color: var(--primary-blue); padding: 14px 32px; border-radius: 30px; font-weight:bold; text-decoration:none; transition:0.3s; }
+    .btn:hover { background: #b9962d; transform: scale(1.05); }
+
+    /* Sections */
+    section { padding:80px 60px; }
+    h2.section-title { font-family: 'Playfair Display', serif; font-size: 38px; color: var(--primary-blue); margin-bottom:10px; letter-spacing:1px; }
+    p.subtitle { color:#666; margin-bottom:40px; font-size:18px; }
+
+/* Interactive Food Menu */
+.menu-tabs {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 25px;
+}
+.tab-btn {
+  padding: 10px 18px;
+  border-radius: 6px;
+  border: none;
+  background: var(--primary-blue);
+  color: var(--light-bg);
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.tab-btn.active, .tab-btn:hover {
+  background: var(--secondary-gold);
+  color: var(--primary-blue);
+  transform: scale(1.05);
+}
+
+.menu-display {
+  display: flex;
+  justify-content: space-around;
+  background: var(--primary-blue);
+  color: var(--light-bg);
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.menu-display .time-slot h4 { font-family: 'Playfair Display', serif; font-size: 18px; margin-bottom:5px; }
+.menu-display .time-slot p { font-size:16px; }
+
+.menu-items {
+  background:#fff;
+  border-radius:12px;
+  padding:20px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.12);
+}
+.menu-items ul {
+  list-style:none;
+  padding-left:0;
+}
+.menu-items ul li {
+  padding:6px 0;
+  border-bottom:1px dotted blue;
+  font-size:16px;
+}
+
+    /* Facilities */
+    .cards { display:flex; gap:30px; justify-content:center; flex-wrap:wrap; }
+    .card { background:#fff; border-radius:12px; box-shadow:0 8px 20px rgba(0,0,0,0.12); width:320px; text-align:left; overflow:hidden; transition: transform 0.4s ease, box-shadow 0.4s ease; }
+    .card:hover { transform: translateY(-10px); box-shadow:0 12px 25px rgba(0,0,0,0.2); }
+    .card img { width:100%; height:220px; object-fit:cover; }
+    .card h3 { color: var(--primary-blue); margin:15px; font-family: 'Playfair Display'; font-size: 22px; }
+    .card p { margin:0 15px 20px; color:#555; font-size:16px; }
+
+    /* Amenities Section */
+.amenities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 40px;
+  margin-top: 40px;
+  justify-items: center;
+}
+.amenity-card {
+  background: #fff;
+  border-radius: 18px;
+  padding: 0;
+  width: 240px;
+  min-height: 320px;
+  text-align: center;
+  box-shadow: 0 10px 28px rgba(0,0,0,0.14);
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  overflow: hidden;
+}
+.amenity-card img {
+  width: 100%;
+  height: 90%;
+  min-height: 160px;
+  max-height: 250px;
+  object-fit: cover;
+  border-bottom: 4px solid var(--secondary-gold);
+  border-radius: 18px 18px 0 0;
+  box-shadow: 0 8px 24px rgba(212,175,55,0.18), 0 2px 8px rgba(10,31,68,0.10);
+  background: linear-gradient(135deg, #fffbe6 60%, #f9f6e7 100%);
+  transition: box-shadow 0.3s, border-color 0.3s;
+}
+.amenity-card p {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--primary-blue);
+  margin: 24px 12px 0 12px;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.amenity-card:hover {
+  transform: translateY(-14px) scale(1.04);
+  box-shadow: 0 18px 38px rgba(126, 124, 116, 0.477);
+}
+
+
+    /* Pricing */
+    .pricing-grid { display:grid; grid-template-columns: repeat(3,minmax(280px,1fr)); gap:30px; margin-top:40px; }
+    .price-card { background:#fff; border-radius:12px; padding:28px; box-shadow:0 8px 20px rgba(0,0,0,0.12); text-align:center; transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease; border:2px solid transparent; }
+    .price-card:hover { transform: translateY(-10px); box-shadow:0 12px 25px rgba(0,0,0,0.2); border-color: var(--secondary-gold); }
+    .price-card.popular { border: 2px solid var(--secondary-gold); box-shadow:0 12px 30px rgba(185,150,45,0.35); }
+    .price-card h3 { color: var(--primary-blue); font-size:22px; margin-bottom:15px; font-family: 'Playfair Display'; }
+    .price-card .price { font-size:1.9rem; font-weight:bold; color: var(--secondary-gold); margin-bottom:20px; }
+    .price-card .price span { font-size:0.9rem; color:#666; }
+    .price-card ul { list-style:none; margin-bottom:20px; padding-left:0; text-align:left; }
+    .price-card ul li { padding:6px 0; border-bottom:1px solid #eee; font-size:16px; }
+    .price-card .plan-btn { display:inline-block; padding:12px 24px; background: var(--secondary-gold); color: var(--primary-blue); font-weight:600; border-radius:8px; text-decoration:none; transition:0.3s; }
+    .price-card .plan-btn:hover { background:#b9962d; transform: scale(1.05); }
+
+    /* Owner Card */
+    .owner-card { display:flex; flex-direction:column; align-items:center; background:#fff; border-radius:30px; padding:25px; box-shadow:0 8px 20px rgba(0,0,0,0.12); width:1250px; margin:auto; transition: transform 0.4s ease; }
+    .owner-card:hover { transform: translateY(-8px); }
+    .owner-card img { width: 250px; height:250px; border-radius:50%; object-fit:cover; margin-bottom:15px; }
+    .owner-card h4 { color: var(--primary-blue); font-family: 'Playfair Display'; font-size:22px; margin-bottom:5px; }
+    .owner-card p { color:#555; font-size:16px; text-align:center; }
+
+    /* Location Section Two Columns */
+.location-container {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+  justify-content: center;
+  max-width: 1000px;
+  margin: 0 auto;
+  flex-wrap: wrap; /* for mobile */
+}
+
+.location-map {
+  flex: 1;
+  min-width: 300px;
+}
+
+.location-map iframe {
+  width: 100%;
+  height: 300px;
+  border-radius: 12px;
+  border: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.location-info {
+  flex: 1;
+  min-width: 300px;
+  text-align: left;
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  border-left: 5px solid var(--secondary-gold);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+}
+
+.location-info h4 {
+  color: var(--primary-blue);
+  margin-top: 15px;
+  margin-bottom: 8px;
+  font-size: 1.1rem;
+}
+
+.location-info p {
+  color: #555;
+  font-size: 0.95rem;
+  margin-bottom: 15px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .location-container {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .location-info, .location-map iframe {
+    width: 100%;
+  }
+}
+
+    /* Footer */
+    footer { background: var(--primary-blue); color: var(--light-bg); display:flex; justify-content:space-around; padding:50px 20px; flex-wrap:wrap; }
+    footer div { margin-bottom:20px; }
+    footer h3 { margin-bottom:15px; color: var(--secondary-gold); font-family: 'Playfair Display'; }
+    footer ul { list-style:none; padding-left:0; }
+    footer ul li { margin-bottom:8px; }
+    footer ul li::before { content:"🗸 "; color: var(--secondary-gold); }
+
+    /* Floating WhatsApp Button */
+    .whatsapp-btn { position:fixed; bottom:20px; right:20px; background: var(--secondary-gold); width:60px; height:60px; border-radius:50%; display:flex; justify-content:center; align-items:center; box-shadow:0 6px 15px rgba(0,0,0,0.3); cursor:pointer; z-index:3000; transition:0.3s; }
+    .whatsapp-btn img { width:32px; height:32px; }
+    .whatsapp-btn:hover { background:#b9962d; transform: scale(1.1); }
+
+    @media(max-width:768px){
+      section { padding:50px 20px; }
+      .cards, .pricing-grid { flex-direction:column; align-items:center; }
+      footer { flex-direction:column; text-align:center; gap:30px; }
+    }
+/* From Uiverse.io by barisdogansutcu */ 
+button {
+  padding: 17px 20px;
+  border-radius: 50px;
+  cursor: pointer;
+  border: 0;
+  background-color: var(--secondary-gold);
+  box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
+  letter-spacing: 1.5px;
+  color: blue;
+  font-size: 15px;
+  transition: all 0.5s ease;
+}
+
+button:hover {
+  letter-spacing: 3px;
+  background-color: var(--secondary-gold) ;
+  color: var(--primary-blue);
+  box-shadow: rgb(107, 103, 103) 0px 3px 15px 0px;
+}
+
+button:active {
+  letter-spacing: 3px;
+  background-color: var(--secondary-gold);
+  color: hsl(0, 0%, 100%);
+  box-shadow:  var(--primary-blue) 0px 0px 0px 0px;
+  transform: translateY(10px);
+  transition: 100ms;
+}
+
+/* ✅ Responsive Enhancements */
+
+/* For tablets & small desktops */
+@media (max-width: 992px) {
+  nav {
+    padding: 12px 30px;
+  }
+  nav ul {
+    gap: 18px;
+  }
+  .hero h1 {
+    font-size: 42px;
+  }
+  .hero p {
+    font-size: 18px;
+  }
+  .pricing-grid {
+    grid-template-columns: repeat(2, minmax(250px, 1fr));
+  }
+}
+
+/* For mobile devices */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 12px 20px;
+  }
+  nav h1 {
+    font-size: 22px;
+    margin-bottom: 12px;
+  }
+  nav ul {
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+  }
+  nav ul li a {
+    font-size: 15px;
+  }
+  .book-now-btn {
+    margin: 10px 0 0 0;
+    padding: 8px 5px;
+    font-size: 14px;
+  }
+
+  .hero {
+    padding: 0 15px;
+    height: auto;
+    min-height: 80vh;
+  }
+  .hero h1 {
+    font-size: 32px;
+  }
+  .hero p {
+    font-size: 16px;
+  }
+  .btn {
+    padding: 10px 22px;
+    font-size: 14px;
+  }
+
+  section {
+    padding: 40px 20px;
+  }
+  h2.section-title {
+    font-size: 28px;
+  }
+  p.subtitle {
+    font-size: 16px;
+  }
+
+  .menu-display {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+
+  .cards {
+    flex-direction: column;
+    align-items: center;
+  }
+  .card {
+    width: 90%;
+  }
+
+  .pricing-grid {
+    grid-template-columns: 1fr;
+  }
+  .price-card {
+    padding: 20px;
+  }
+
+  .owner-card {
+    width: 95%;
+    padding: 20px;
+  }
+  .owner-card img {
+    width: 180px;
+    height: 180px;
+  }
+
+  footer {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+  footer div {
+    margin-bottom: 15px;
+  }
+}
+
+/* For very small devices (like 360px width) */
+@media (max-width: 480px) {
+  nav h1 {
+    font-size: 18px;
+  }
+  nav ul li a {
+    font-size: 14px;
+  }
+  .hero h1 {
+    font-size: 26px;
+  }
+  .hero p {
+    font-size: 14px;
+  }
+  .btn {
+    padding: 8px 18px;
+    font-size: 13px;
+  }
+  h2.section-title {
+    font-size: 24px;
+  }
+  .amenity-card {
+    width: 100%;
+    min-height: auto;
+  }
+  .price-card .price {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Facilities cards: 2 in a row on mobile */
+  .cards {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 18px;
+    justify-items: center;
+  }
+  .card {
+    width: 98% !important;
+    min-width: 0;
+    margin: 0;
+  }
+
+  /* Amenities: 2 in a row on mobile */
+  .amenities-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    justify-items: center;
+  }
+  .amenity-card {
+    width: 98% !important;
+    min-width: 0;
+    margin: 0;
+  }
+
+  /* Pricing plans: 2 in a row on mobile */
+  .pricing-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    justify-items: center;
+  }
+  .price-card {
+    width: 98% !important;
+    height: 200px;
+    min-width: 0;
+    margin: 0;
+    padding: 16px;
+  }
+
+  /* Book Now button fixed at bottom on mobile */
+  .book-now-btn {
+    position: fixed;
+    left: 50%;
+    bottom: 12px;
+    transform: translateX(-50%);
+    background: var(--secondary-gold);
+    z-index: 4000;
+    width: 150px;
+    max-width: 340px;
+    font-size: 18px;
+    padding: 12px 10px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    margin: 0 !important;
+    border-radius: 30px;
+    text-align: center;
+    display: block;
+  }
+  .book-now-btn:hover {
+    background: var(--secondary-gold);
+    transform: translateX(-50%) scale(1.05);
+  }
+  nav {
+    padding-bottom: 60px;
+  }
+  .main-book-now-btn {
+    display: none; /* hide duplicate button in nav */
+  }
+  .location-map iframe {
+    height: 250px;
+    margin-left: 25%;
+  }
+}
+
+
+  </style>
+</head>
+<body>
+
+<nav>
+    <h1>M&M LUXURY PG</h1>
+
+    <!-- Hamburger Menu Button -->
+    <div class="menu-toggle" id="menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <!-- Slide-in Menu -->
+    <ul id="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#facilities">Facilities</a></li>
+      <li><a href="#amenities">Amenities</a></li>
+      <li><a href="#food">Food</a></li>
+      <li><a href="#pricing">Plans</a></li>
+      <li><a href="#owner">Owner</a></li>
+      <li><a href="#location">Location</a></li> 
+      <li>
+        <select class="branches" onchange="if(this.value) window.location.href=this.value;">
+          <option value="">Select Branch</option>
+          <option value="index.html">Branch 1</option>
+          <option value="branch-2.html">Branch 2</option>
+          <option value="branch-3.html">Branch 3</option>
+        </select>
+      </li>
+    </ul>
+
+    <a href="https://api.whatsapp.com/send?phone=916305313849&text=Hello,%20I%20am%20looking%20for%20a%20PG%20Room.%20is%20it%20available?" 
+       class="main-book-now-btn" target="_blank">Book Now</a>
+  </nav>
+
+  <script>
+    const menuToggle = document.getElementById("menu-toggle");
+    const navLinks = document.getElementById("nav-links");
+
+    menuToggle.addEventListener("click", () => {
+      navLinks.classList.toggle("show");
+      menuToggle.classList.toggle("active");
+    });
+
+    // Auto close menu when clicking a link
+    document.querySelectorAll("#nav-links a").forEach(link => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("show");
+        menuToggle.classList.remove("active");
+      });
+    });
+  </script>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero" data-aos="fade-in">
+    <h1>M&M LUXURY PG</h1>
+    <p>Premium Accommodation for Gents & Ladies</p>
+    <a href="#facilities" class="btn">Explore Facilities</a>
+  </section>
+
+  <!-- Facilities -->
+  <section id="facilities">
+    <h2 class="section-title" data-aos="fade-up">Our Facilities</h2>
+    <p class="subtitle">Luxury rooms and amenities designed for your comfort</p>
+    <div class="cards">
+      <div class="card" data-aos="zoom-in"><img src="https://i.ibb.co/pjy3Y08/boys-room.jpg"><h3>Boys' Rooms</h3><p>Spacious, well-furnished rooms with essential amenities.</p></div>
+      <div class="card" data-aos="zoom-in" data-aos-delay="100"><img src="https://i.ibb.co/7CCfx7p/girls-room.jpg"><h3>Girls' Rooms</h3><p>Elegant rooms crafted for safety and comfort.</p></div>
+      <div class="card" data-aos="zoom-in" data-aos-delay="200"><img src="https://i.ibb.co/6FQycpZ/bathroom.jpg"><h3>Bathroom & Toilets</h3><p>Clean, hygienic washrooms with 24/7 water supply.</p></div>
+    </div>
+  </section>
+
+<!-- Amenities Section -->
+<section id="amenities">
+  <h2 class="section-title" data-aos="fade-up">Our Amenities</h2>
+  <p class="subtitle" data-aos="fade-up" data-aos-delay="100">All the comforts you need for a luxury stay</p>
+
+  <div class="amenities-grid">
+    <div class="amenity-card" data-aos="zoom-in">
+      <img src="https://i.ibb.co/4NJ7tHc/cctv.png" alt="CCTV">
+      <p>CCTV Security</p>
+    </div>
+    <div class="amenity-card" data-aos="zoom-in" data-aos-delay="100">
+      <img src="https://i.ibb.co/3MKcH7x/biometric-boys.png" alt="Biometric Lock Boys">
+      <p>Biometric Door Lock</p>
+    </div>
+    <div class="amenity-card" data-aos="zoom-in" data-aos-delay="200">
+      <img src="https://i.ibb.co/s1f3r91/biometric-girls.png" alt="Biometric Lock Girls">
+      <p>Television</p>
+    </div>
+    <div class="amenity-card" data-aos="zoom-in" data-aos-delay="300">
+      <img src="https://i.ibb.co/WxvKcHP/terrace.png" alt="Terrace">
+      <p>24/7 Hot Water</p>
+    </div>
+    <div class="amenity-card" data-aos="zoom-in" data-aos-delay="400">
+      <img src="https://i.ibb.co/6n3ZsG1/washing-machine.png" alt="Washing Machine">
+      <p>Washing Machines</p>
+    </div>
+    <div class="amenity-card" data-aos="zoom-in" data-aos-delay="500">
+      <img src="https://i.ibb.co/8P2V1RL/wifi.png" alt="WiFi">
+      <p>High-Speed WiFi</p>
+    </div>
+    <div class="amenity-card" data-aos="zoom-in" data-aos-delay="600">
+      <img src="https://i.ibb.co/XV7k5rD/self-kitchen.png" alt="Self Kitchen">
+      <p>Self Kitchen</p>
+    </div>
+    <div class="amenity-card" data-aos="zoom-in" data-aos-delay="700">
+      <img src="https://i.ibb.co/Ch6tYx1/open-bathroom.png" alt="Open Bathrooms">
+      <p>Open Bathrooms</p>
+    </div>
+    <div class="amenity-card" data-aos="zoom-in" data-aos-delay="700">
+      <img src="https://i.ibb.co/Ch6tYx1/open-bathroom.png" alt="Open Bathrooms">
+      <p>first-Aid Kits</p>
+    </div>
+    <div class="amenity-card" data-aos="zoom-in" data-aos-delay="700">
+      <img src="https://i.ibb.co/Ch6tYx1/open-bathroom.png" alt="Open Bathrooms">
+      <p>Fire Extinguishers</p>
+    </div>
+  </div>
+</section>
+
+  
+  <!-- Food Menu Section -->
+<!-- Interactive Food Menu Section -->
+<section id="food">
+  <h2 class="section-title" data-aos="fade-up">Food Menu</h2>
+  <p class="subtitle" data-aos="fade-up" data-aos-delay="100">Delicious meals served daily at M&M Luxury PG</p>
+
+  <!-- Day Tabs -->
+  <div class="menu-tabs" data-aos="fade-right">
+    <button class="tab-btn active" data-day="monday">Monday</button>
+    <button class="tab-btn" data-day="tuesday">Tuesday</button>
+    <button class="tab-btn" data-day="wednesday">Wednesday</button>
+    <button class="tab-btn" data-day="thursday">Thursday</button>
+    <button class="tab-btn" data-day="friday">Friday</button>
+    <button class="tab-btn" data-day="saturday">Saturday</button>
+    <button class="tab-btn" data-day="sunday">Sunday</button>
+  </div>
+
+  <!-- Menu Display -->
+  <div class="menu-display" data-aos="zoom-in">
+    <div class="time-slot">
+      <h4 style="color: var(--secondary-gold);">Morning</h4>
+      <p id="morning-meal">7:00 AM - 10:00 AM</p>
+    </div>
+    <div class="time-slot">
+      <h4 style="color: var(--secondary-gold);">Afternoon</h4>
+      <p id="afternoon-meal">12:30 PM - 2:00 PM</p>
+    </div>
+    <div class="time-slot">
+      <h4 style="color: var(--secondary-gold);">Night</h4>
+      <p id="night-meal">7:00 PM - 9:00 PM</p>
+    </div>
+  </div>
+
+  <div class="menu-items">
+    <ul id="menu-list">
+      <!-- Dynamic content populated by JS -->
+    </ul>
+  </div><br>
+  <p style="font-size: small; padding-left: 35%" data-aos="fade-up" data-aos-delay="100"><i>Menu may vary sometimes , but quality will never be compromised</i></p>
+  
+</section>
+
+<script>
+    // Interactive Food Menu JS
+const menuData = {
+  monday: ["Breakfast:  Idli, Dosa, Tea/Coffee", "Lunch:  Veg Biryani, Raita, Salad", "Dinner:  Chapati, Dal, Mixed Veg"],
+  tuesday: ["Breakfast:  Poha, Upma, Juice", "Lunch:  Paneer Butter Masala, Rice, Salad", "Dinner:  Chapati, Vegetable Curry, Curd"],
+  wednesday: ["Breakfast:  Paratha, Curd, Tea/Coffee", "Lunch:  Vegetable Pulao, Dal, Salad", "Dinner:  Chapati, Mixed Veg, Soup"],
+  thursday: ["Breakfast:  Bread Omelette, Juice", "Lunch:  Chole, Rice, Salad", "Dinner:  Chapati, Paneer Curry, Curd"],
+  friday: ["Breakfast:  Dosa, Coconut Chutney, Tea/Coffee", "Lunch:  Vegetable Khichdi, Salad, Papad", "Dinner:  Chapati, Dal Tadka, Mixed Veg"],
+  saturday: ["Breakfast:  Idli, Upma, Juice", "Lunch:  Rajma, Rice, Salad", "Dinner:  Chapati, Vegetable Curry, Curd"],
+  sunday: ["Breakfast:  Poha, Bread, Tea/Coffee", "Lunch:  Veg Biryani, Raita, Salad", "Dinner:  Chapati, Dal, Mixed Veg"]
+};
+
+const tabs = document.querySelectorAll('.tab-btn');
+const menuList = document.getElementById('menu-list');
+
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    // Activate tab
+    tabs.forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+
+    // Populate menu
+    const day = tab.dataset.day;
+    menuList.innerHTML = '';
+    menuData[day].forEach(item => {
+      const li = document.createElement('li');
+      li.textContent = item;
+      menuList.appendChild(li);
+    });
+  });
+});
+
+// Load Monday by default
+document.querySelector('.tab-btn.active').click();
+
+</script>
+
+
+  <!-- Pricing Section --> 
+   <!-- inlcude "popular" along with the class name "price-card" to highlight the card-->
+  <section id="pricing">
+    <h2 class="section-title" data-aos="fade-up">Our Plans</h2>
+    <p class="subtitle" data-aos="fade-up" data-aos-delay="100"><span style="color: var(--secondary-gold);"><b>₹3000</b></span> Advance including Caution Deposit is <b>Mandatory</b> (One Day Stay - No Advance)</p>
+    <div class="pricing-grid">
+      <div class="price-card" data-aos="fade-up"><h3>Single Sharing</h3><p class="price">₹18,000 <span>/ month</span></p><a href="https://api.whatsapp.com/send?phone=916305313849&text=Hello,%20I%20am%20looking%20for%20a%20Single%20share%20PG%20Room.%20is%20it%20available?" class="book-now-btn" target="_blank">Book Now</a></div>
+      <div class="price-card " data-aos="fade-down"><h3>Double Sharing</h3><p class="price">₹9,000 <span>/ month</span></p><a href="https://api.whatsapp.com/send?phone=916305313849&text=Hello,%20I%20am%20looking%20for%20a%20Double%20share%20PG%20Room.%20is%20it%20available?" class="book-now-btn" target="_blank">Book Now</a></div>
+      <div class="price-card" data-aos="fade-up"><h3>Triple Sharing</h3><p class="price">₹8,000 <span>/ month</span></p><a href="https://api.whatsapp.com/send?phone=916305313849&text=Hello,%20I%20am%20looking%20for%20a%203%20share%20PG%20Room.%20is%20it%20available?" class="book-now-btn" target="_blank">Book Now</a></div>
+      <div class="price-card" data-aos="fade-up"><h3>Four Sharing</h3><p class="price">₹7,000 <span>/ month</span></p><a href="https://api.whatsapp.com/send?phone=916305313849&text=Hello,%20I%20am%20looking%20for%20a%204%20share%20PG%20Room.%20is%20it%20available?" class="book-now-btn" target="_blank">Book Now</a></div>
+      <div class="price-card" data-aos="fade-down"><h3>Five Sharing</h3><p class="price">₹6,000 <span>/ month</span></p><a href="https://api.whatsapp.com/send?phone=916305313849&text=Hello,%20I%20am%20looking%20for%20a%205%20share%20PG%20Room.%20is%20it%20available?" class="book-now-btn" target="_blank">Book Now</a></div>
+      <div class="price-card" data-aos="fade-down"><h3>One Day Stay</h3><p class="price">₹500 <span>/ 24 hours</span></p><a href="https://api.whatsapp.com/send?phone=916305313849&text=Hello,%20I%20am%20looking%20for%20a%20PG%20Room%20for%20a%20single%20day.%20is%20it%20available?" class="book-now-btn" target="_blank">Book Now</a></div>
+    
+    </div>
+  </section>
+
+  <!-- Owner Section -->
+  <section id="owner">
+    <h2 class="section-title" data-aos="fade-up">Meet the Owner</h2>
+    <div class="owner-card" data-aos="zoom-in">
+      <img src="https://i.ibb.co/YfYpGZV/owner.jpg" alt="Owner">
+      <h4>Mr. Basha</h4>
+      <p>Passionate about providing safe, luxurious, and affordable PG accommodations for students and working professionals.</p>
+      <br><a href="https://api.whatsapp.com/send?phone=916305313849&text=Hello,%20I%20looking%20for%20a%20PG%20Room%20"  target="_blank"><button >Contact Now</button></a>
+    </div>
+  </section>
+
+<!-- Location -->
+<section id="location">
+  <h2 class="section-title" data-aos="fade-up">Our Location</h2>
+  <p class="subtitle" data-aos="fade-up" data-aos-delay="100">Find us at our prime branch</p>
+
+  <div class="location-container" data-aos="fade-up">
+    <div class="location-map">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.3295154566466!2d77.6545158!3d13.0118167!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1125eeddb815%3A0x4fec6591897f104c!2sM%26M%20LUXURY%20PG%20FOR%20GENTS%20AND%20LADIES!5e0!3m2!1sen!2sin!4v1694040000000!5m2!1sen!2sin" 
+              allowfullscreen="" loading="lazy"></iframe>
+      </div>
+
+    <div class="location-info">
+      <h4>📍 Address</h4>
+      <p>M&M Luxury PG for Gents & Ladies, Kasturi Nagar, Bangalore – 560043</p>
+      <h4>🕒 Near By</h4>
+      <p>
+        <ul>
+          <li>Hosipital(100m)</li>
+          <li>Salon(50m)</li>
+          <li>Laundry Shop(50m)</li>
+          <li>Park(100m)</li>
+          <li>Temple(100m)</li>
+          <li>Bus Stop(100m)</li>
+          <li>Railway Station(100m)</li>
+          <li>Super Mart(100m)</li>
+        </ul>
+      </p>
+      
+      <h4>📞 Quick Contact</h4>
+      <p>+91 98765 43210</p>
+    </div>
+  </div>
+</section>
+
+  <!-- Footer / Amenities -->
+  <footer id="footer">
+    <div>
+      <h3>Amenities</h3>
+      <ul>
+        <li>High-Speed WiFi</li>
+        <li>3 Meals</li>
+        <li>24/7 Security</li>
+        <li>Housekeeping</li>
+        <li>Biometric Door Lock</li>
+        <li>Laundry Facility</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Contact Us</h3>
+      <ul>
+        <li>Phone: +91 98765 43210</li>
+        <li>Email: info@mandmpluxurypg.com</li>
+        <li>Location: Bangaluru, India</li>
+      </ul>
+    </div>
+    <div>
+      <h3><a href="https://www.google.com/maps/place/M%26M+LUXURY+PG+FOR+GENTS+AND+LADIES/@13.012193,77.657252,17z/data=!4m8!3m7!1s0x3bae1125eeddb815:0x4fec6591897f104c!8m2!3d13.0118167!4d77.6570907!9m1!1b1!16s%2Fg%2F11x1_d4xz6?hl=en&entry=ttu&g_ep=EgoyMDI1MDkwMy4wIKXMDSoASAFQAw%3D%3D" target="_blank" style="color: var(--secondary-gold);">Rate Us</a>
+    </h3>
+      <ul>
+        <li>in Google</li>
+      </ul>
+    </div><br>
+    <div style="text-align: center; width: 100%; margin-top: 20px;">
+      <p>
+      ©
+      <span>
+       Copyrights 2025
+      <strong style="color: var(--secondary-gold);">M&M Luxury PG</strong></a>
+       All Rights Reserved
+       <br/>
+       Designed & Developed by 
+       <a href="https://madhusudhanreddy.netlify.app/" target="_blank"><strong style="color: var(--secondary-gold); text-decoration: underline;" >Madhu Sudhan Reddy Kethari</strong></a>
+      </span>
+     </p>
+    </div>
+    
+  </footer>
+
+  <!-- Floating WhatsApp Button -->
+  <a href="https://api.whatsapp.com/send?phone=916305313849&text=Hello,%20I%20am%20looking%20for%20a%20PG%20Room.%20is%20it%20available?" class="whatsapp-btn" target="_blank" title="Chat on WhatsApp">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+  </a>
+
+  <!-- AOS JS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 1200, once: true, easing:'ease-in-out' });
+  </script>
+</body>
+</html>
