@@ -223,7 +223,7 @@
       }
     }
     /* Hero */
-    .hero { height:100vh; background: linear-gradient(rgba(10,31,68,0.7), rgba(10,31,68,0.7)), url('https://i.ibb.co/gR3FRbc/lounge.jpg') center/cover no-repeat; display:flex; justify-content:center; align-items:center; flex-direction:column; text-align:center; color: var(--text-light); }
+    .hero { height:100vh; background: linear-gradient(rgba(10,31,68,0.7), rgba(10,31,68,0.7)), url('images/pg building.png') center/cover no-repeat; display:flex; justify-content:center; align-items:center; flex-direction:column; text-align:center; color: var(--text-light); }
     .hero h1 { font-family: 'Playfair Display', serif; font-size: 54px; color: var(--secondary-gold); margin-bottom:20px; letter-spacing:1px; }
     .hero p { font-size: 22px; margin-bottom:30px; }
     .btn { background: var(--secondary-gold); color: var(--primary-blue); padding: 14px 32px; border-radius: 30px; font-weight:bold; text-decoration:none; transition:0.3s; }
@@ -664,15 +664,16 @@ button:active {
     transform: translateX(-50%);
     background: var(--secondary-gold);
     z-index: 4000;
-    width: 150px;
+    width: 120px;
+    height: 20px;
     max-width: 340px;
     font-size: 18px;
     padding: 12px 10px;
     box-shadow: 0 4px 16px rgba(0,0,0,0.12);
-    margin: 0 !important;
+    margin: 0px !important;
     border-radius: 30px;
     text-align: center;
-    display: block;
+    display: inline-table;
   }
   .book-now-btn:hover {
     background: var(--secondary-gold);
@@ -716,10 +717,9 @@ button:active {
       <li><a href="#location">Location</a></li> 
       <li>
         <select class="branches" onchange="if(this.value) window.location.href=this.value;">
-          <option value="">Select Branch</option>
+          <option value="branch-3.html">Branch 3</option>
           <option value="index.html">Branch 1</option>
           <option value="branch-2.html">Branch 2</option>
-          <option value="branch-3.html">Branch 3</option>
         </select>
       </li>
     </ul>
@@ -758,9 +758,9 @@ button:active {
     <h2 class="section-title" data-aos="fade-up">Our Facilities</h2>
     <p class="subtitle">Luxury rooms and amenities designed for your comfort</p>
     <div class="cards">
-      <div class="card" data-aos="zoom-in"><img src="https://i.ibb.co/pjy3Y08/boys-room.jpg"><h3>Boys' Rooms</h3><p>Spacious, well-furnished rooms with essential amenities.</p></div>
-      <div class="card" data-aos="zoom-in" data-aos-delay="100"><img src="https://i.ibb.co/7CCfx7p/girls-room.jpg"><h3>Girls' Rooms</h3><p>Elegant rooms crafted for safety and comfort.</p></div>
-      <div class="card" data-aos="zoom-in" data-aos-delay="200"><img src="https://i.ibb.co/6FQycpZ/bathroom.jpg"><h3>Bathroom & Toilets</h3><p>Clean, hygienic washrooms with 24/7 water supply.</p></div>
+      <div class="card" data-aos="zoom-in"><img src="images/boys room.jpg"><h3>Boys' Rooms</h3><p>Spacious, well-furnished rooms with essential amenities.</p></div>
+      <div class="card" data-aos="zoom-in" data-aos-delay="100"><img src="images/girls room.jpg"><h3>Girls' Rooms</h3><p>Elegant rooms crafted for safety and comfort.</p></div>
+      <div class="card" data-aos="zoom-in" data-aos-delay="200"><img src="images/bathrooms.jpg"><h3>Bathroom & Toilets</h3><p>Clean, hygienic washrooms with 24/7 water supply.</p></div>
     </div>
   </section>
 
@@ -771,44 +771,44 @@ button:active {
 
   <div class="amenities-grid">
     <div class="amenity-card" data-aos="zoom-in">
-      <img src="https://i.ibb.co/4NJ7tHc/cctv.png" alt="CCTV">
+      <img src="images/cctv.jpg" alt="CCTV">
       <p>CCTV Security</p>
     </div>
     <div class="amenity-card" data-aos="zoom-in" data-aos-delay="100">
-      <img src="https://i.ibb.co/3MKcH7x/biometric-boys.png" alt="Biometric Lock Boys">
+      <img src="images/bio metric.jpg" alt="Biometric Lock Boys">
       <p>Biometric Door Lock</p>
     </div>
     <div class="amenity-card" data-aos="zoom-in" data-aos-delay="200">
-      <img src="https://i.ibb.co/s1f3r91/biometric-girls.png" alt="Biometric Lock Girls">
+      <img src="images/television.jpg" alt="Television">
       <p>Television</p>
     </div>
     <div class="amenity-card" data-aos="zoom-in" data-aos-delay="300">
-      <img src="https://i.ibb.co/WxvKcHP/terrace.png" alt="Terrace">
+      <img src="images/hot water.jpg" alt="24/7 Hot Water">
       <p>24/7 Hot Water</p>
     </div>
     <div class="amenity-card" data-aos="zoom-in" data-aos-delay="400">
-      <img src="https://i.ibb.co/6n3ZsG1/washing-machine.png" alt="Washing Machine">
+      <img src="images/washing machine.jpg" alt="Washing Machine">
       <p>Washing Machines</p>
     </div>
     <div class="amenity-card" data-aos="zoom-in" data-aos-delay="500">
-      <img src="https://i.ibb.co/8P2V1RL/wifi.png" alt="WiFi">
+      <img src="images/wifi.jpg" alt="WiFi">
       <p>High-Speed WiFi</p>
     </div>
     <div class="amenity-card" data-aos="zoom-in" data-aos-delay="600">
-      <img src="https://i.ibb.co/XV7k5rD/self-kitchen.png" alt="Self Kitchen">
+      <img src="images/self kitechen.webp" alt="Self Kitchen">
       <p>Self Kitchen</p>
     </div>
     <div class="amenity-card" data-aos="zoom-in" data-aos-delay="700">
-      <img src="https://i.ibb.co/Ch6tYx1/open-bathroom.png" alt="Open Bathrooms">
+      <img src="images/open bathrooms.jpg" alt="Open Bathrooms">
       <p>Open Bathrooms</p>
     </div>
     <div class="amenity-card" data-aos="zoom-in" data-aos-delay="700">
-      <img src="https://i.ibb.co/Ch6tYx1/open-bathroom.png" alt="Open Bathrooms">
+      <img src="images/first aid.jpg" alt="Open Bathrooms">
       <p>first-Aid Kits</p>
     </div>
     <div class="amenity-card" data-aos="zoom-in" data-aos-delay="700">
-      <img src="https://i.ibb.co/Ch6tYx1/open-bathroom.png" alt="Open Bathrooms">
-      <p>Fire Extinguishers</p>
+      <img src="images/Fridge.jpg" alt="Fridge">
+      <p>Fridge</p>
     </div>
   </div>
 </section>
@@ -898,14 +898,14 @@ document.querySelector('.tab-btn.active').click();
    <!-- inlcude "popular" along with the class name "price-card" to highlight the card-->
   <section id="pricing">
     <h2 class="section-title" data-aos="fade-up">Our Plans</h2>
-    <p class="subtitle" data-aos="fade-up" data-aos-delay="100"><span style="color: var(--secondary-gold);"><b>₹3000</b></span> Advance including Caution Deposit is <b>Mandatory</b> (One Day Stay - No Advance)</p>
+    <p class="subtitle" data-aos="zoom-in" data-aos-delay="100"><span style="color: var(--secondary-gold);"><b>₹3000</b></span> Advance including Caution Deposit is <b>Mandatory</b> (One Day Stay - No Advance)</p>
     <div class="pricing-grid">
-      <div class="price-card" data-aos="fade-up"><h3>Single Sharing</h3><p class="price">₹18,000 <span>/ month</span></p><a href="https://api.whatsapp.com/send?phone=916305313849&text=Hello,%20I%20am%20looking%20for%20a%20Single%20share%20PG%20Room.%20is%20it%20available?" class="book-now-btn" target="_blank">Book Now</a></div>
-      <div class="price-card " data-aos="fade-down"><h3>Double Sharing</h3><p class="price">₹9,000 <span>/ month</span></p><a href="https://api.whatsapp.com/send?phone=916305313849&text=Hello,%20I%20am%20looking%20for%20a%20Double%20share%20PG%20Room.%20is%20it%20available?" class="book-now-btn" target="_blank">Book Now</a></div>
-      <div class="price-card" data-aos="fade-up"><h3>Triple Sharing</h3><p class="price">₹8,000 <span>/ month</span></p><a href="https://api.whatsapp.com/send?phone=916305313849&text=Hello,%20I%20am%20looking%20for%20a%203%20share%20PG%20Room.%20is%20it%20available?" class="book-now-btn" target="_blank">Book Now</a></div>
-      <div class="price-card" data-aos="fade-up"><h3>Four Sharing</h3><p class="price">₹7,000 <span>/ month</span></p><a href="https://api.whatsapp.com/send?phone=916305313849&text=Hello,%20I%20am%20looking%20for%20a%204%20share%20PG%20Room.%20is%20it%20available?" class="book-now-btn" target="_blank">Book Now</a></div>
-      <div class="price-card" data-aos="fade-down"><h3>Five Sharing</h3><p class="price">₹6,000 <span>/ month</span></p><a href="https://api.whatsapp.com/send?phone=916305313849&text=Hello,%20I%20am%20looking%20for%20a%205%20share%20PG%20Room.%20is%20it%20available?" class="book-now-btn" target="_blank">Book Now</a></div>
-      <div class="price-card" data-aos="fade-down"><h3>One Day Stay</h3><p class="price">₹500 <span>/ 24 hours</span></p><a href="https://api.whatsapp.com/send?phone=916305313849&text=Hello,%20I%20am%20looking%20for%20a%20PG%20Room%20for%20a%20single%20day.%20is%20it%20available?" class="book-now-btn" target="_blank">Book Now</a></div>
+      <div class="price-card" data-aos="fade-down"><h3>Single Sharing</h3><p class="price">₹18,000 </p><a href="https://api.whatsapp.com/send?phone=916305313849&text=Hello,%20I%20am%20looking%20for%20a%20Single%20share%20PG%20Room.%20is%20it%20available?" class="book-now-btn" target="_blank">Book Now</a></div>
+      <div class="price-card " data-aos="zoom-in"><h3>Double Sharing</h3><p class="price">₹9,000 </p><a href="https://api.whatsapp.com/send?phone=916305313849&text=Hello,%20I%20am%20looking%20for%20a%20Double%20share%20PG%20Room.%20is%20it%20available?" class="book-now-btn" target="_blank">Book Now</a></div>
+      <div class="price-card" data-aos="fade-down"><h3>Triple Sharing</h3><p class="price">₹8,000 </p><a href="https://api.whatsapp.com/send?phone=916305313849&text=Hello,%20I%20am%20looking%20for%20a%203%20share%20PG%20Room.%20is%20it%20available?" class="book-now-btn" target="_blank">Book Now</a></div>
+      <div class="price-card" data-aos="fade-up"><h3>Four Sharing</h3><p class="price">₹7,000 </p><a href="https://api.whatsapp.com/send?phone=916305313849&text=Hello,%20I%20am%20looking%20for%20a%204%20share%20PG%20Room.%20is%20it%20available?" class="book-now-btn" target="_blank">Book Now</a></div>
+      <div class="price-card" data-aos="zoom-in"><h3>Five Sharing</h3><p class="price">₹6,000 </p><a href="https://api.whatsapp.com/send?phone=916305313849&text=Hello,%20I%20am%20looking%20for%20a%205%20share%20PG%20Room.%20is%20it%20available?" class="book-now-btn" target="_blank">Book Now</a></div>
+      <div class="price-card" data-aos="fade-up"><h3>One Day Stay</h3><p class="price">₹500 </p><a href="https://api.whatsapp.com/send?phone=916305313849&text=Hello,%20I%20am%20looking%20for%20a%20PG%20Room%20for%20a%20single%20day.%20is%20it%20available?" class="book-now-btn" target="_blank">Book Now</a></div>
     
     </div>
   </section>
@@ -914,7 +914,7 @@ document.querySelector('.tab-btn.active').click();
   <section id="owner">
     <h2 class="section-title" data-aos="fade-up">Meet the Owner</h2>
     <div class="owner-card" data-aos="zoom-in">
-      <img src="https://i.ibb.co/YfYpGZV/owner.jpg" alt="Owner">
+      <img src="images/basha owner.jpg" alt="Owner">
       <h4>Mr. Basha</h4>
       <p>Passionate about providing safe, luxurious, and affordable PG accommodations for students and working professionals.</p>
       <br><a href="https://api.whatsapp.com/send?phone=916305313849&text=Hello,%20I%20looking%20for%20a%20PG%20Room%20"  target="_blank"><button >Contact Now</button></a>
@@ -961,7 +961,7 @@ document.querySelector('.tab-btn.active').click();
       <h3>Amenities</h3>
       <ul>
         <li>High-Speed WiFi</li>
-        <li>3 Meals</li>
+        <li>Open Bathrooms</li>
         <li>24/7 Security</li>
         <li>Housekeeping</li>
         <li>Biometric Door Lock</li>
@@ -973,7 +973,7 @@ document.querySelector('.tab-btn.active').click();
       <ul>
         <li>Phone: +91 98765 43210</li>
         <li>Email: info@mandmpluxurypg.com</li>
-        <li>Location: Bangaluru, India</li>
+        <li>Location: Bengaluru, India</li>
       </ul>
     </div>
     <div>
